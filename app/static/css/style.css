@@ -1,0 +1,19 @@
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+}
+
+.container{
+	width: 800px;
+	min-height: 800px;
+	background-color: pink;
+	margin-right: auto;
+    margin-left: auto;
+}
+
+td { 
+    padding: 7px;
+}	

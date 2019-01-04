@@ -1,0 +1,57 @@
+<html>
+    <head>
+    	<title>Dad Jokes</title>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  		<link rel="stylesheet" type="text/css" href="static/css/style.css">
+    </head>
+    <body>
+    	<div class="container">
+	        <h1 align="center">Famous Dad Jokes!</h1>
+	        <div>
+		        <div class="panel panel-default">
+					<div id="joke" class="panel-body"></div>
+				</div>
+				<div class="wrapper">
+		        	<button id="generate" type="button" class="btn btn-primary">Generate Joke</button>
+		        </div>
+		    </div>
+	        <br>
+	        <div class="wrapper">
+	        	<button id="Like" type="button" class="btn btn-default">Like</button>
+	        	<button id="Dont Like" type="button" class="btn btn-default">Dont Like</button>
+	        	<button id="Dont Care" type="button" class="btn btn-default">Dont Care</button>
+	        </div>
+	        <br>
+	        <br>
+	        <div class="wrapper">
+	        	<button id="summary" type="button" class="btn btn-info btn-lg" onclick="window.location.href='{{ url_for( 'summary') }}';">Summary</button>
+	        </div>
+	    </div>
+	    <script>
+			$('button').click(function(e){
+			    var idClicked = this.id;
+			    // console.log("idClicked", idClicked);
+			    // console.log('$("#joke").text()', $("#joke").text())
+			    if ($("#joke").text() != ''){
+				    if (idClicked == "Like" || idClicked == "Dont Like" || idClicked == "Dont Care"){
+				    	$.post("/save-opinion", {
+							joke: $("#joke").text(),
+							opinion: idClicked
+						}); 
+			    	}
+				}
+				if (idClicked == "generate"){
+					$.getJSON("/generate", function(data){
+				    	// Update the DOM with the joke
+					    console.log("data result", data);
+					    val = data.result;
+					    console.log("data joke result", val);
+					    $("#joke").html(val) ;
+			  		});
+				}
+			});
+		</script>
+    </body>
+</html>

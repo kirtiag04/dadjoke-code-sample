@@ -1,0 +1,7 @@
+Bonus question answer
+
+There are mainly two ways to predict whether the user will like the next dad joke or not.
+1. We can either use content-based filtering to predict the likeness of a user for a particular joke. This filtering takes into account the user profile, and user actions on the previous jokes.
+Moreover, we use the concept of TF-IDF to find out the relative importance of a joke. And then calculate the similarity between the user profile and item profile. There are several methods of calculating similarity such as cosine similarity, Euclidean distance, and Pearson correlation. This approach is useful for recommendations based on joke and user attributes (or content).
+
+2. Another approach to predict the likeness is the collaborative filtering. We can use item-item based filtering to find out whether the user will like the joke or not. Based on this filtering, we can find out the most similar item (or joke) and recommend the opinion based on that similarity. This approach is useful, when we have multiple users in a system and based on these users, we calculate the similarity between the items (or jokes).
